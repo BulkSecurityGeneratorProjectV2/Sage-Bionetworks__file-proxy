@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -28,7 +29,7 @@ public class LocalFileConnectionTest {
 		connection = new LocalFileConnection(pathPrefix);
 		
 		// Create a tempFile to use.
-		tempFile = File.createTempFile("LocalFileConnectionTest", ".txt");
+		tempFile = Files.createTempFile("LocalFileConnectionTest", ".txt").toFile();
 		fileData = "This is the data that in the temp file";
 		FileUtils.write(tempFile, fileData, "UTF-8");
 	}

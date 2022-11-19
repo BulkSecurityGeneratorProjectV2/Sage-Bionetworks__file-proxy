@@ -7,6 +7,7 @@ import static org.sagebionetworks.file.proxy.servlet.FileControllerImpl.HEADER_C
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +56,7 @@ public class HttpToLocalServletTest {
 		System.setProperty("org.sagebionetworks.local.path.prefix", pathPrefix);
 		
 		// Create a tempFile to use.
-		tempFile = File.createTempFile("HttpToLocalServletTest", ".txt");
+		tempFile = Files.createTempFile("HttpToLocalServletTest", ".txt").toFile();
 		fileData = "This is the data that in the temp file";
 		FileUtils.write(tempFile, fileData, "UTF-8");
 		
